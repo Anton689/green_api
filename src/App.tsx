@@ -1,7 +1,18 @@
 import './App.css';
+
+import { useSelector } from 'react-redux';
+
+import { LoginView, MainView } from './views';
+
+import { selectAuth } from 'store/selectors';
 import { ReturnComponentType } from 'types';
 
 export const App = (): ReturnComponentType => {
-  const j = (): string => 'lolo';
-  return <div>lolo</div>;
+  const isAuth = useSelector(selectAuth);
+
+  if (isAuth) {
+    return <MainView />;
+  }
+
+  return <LoginView />;
 };
