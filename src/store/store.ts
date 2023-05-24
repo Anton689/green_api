@@ -1,10 +1,11 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 
-import { contactsReducer, appReducer } from './slices';
+import { contactsReducer, appReducer, chatReducer } from './slices';
 
 const rootReducer = combineReducers({
   app: appReducer,
   contacts: contactsReducer,
+  chats: chatReducer,
 });
 
 export const store = configureStore({

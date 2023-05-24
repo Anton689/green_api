@@ -1,0 +1,33 @@
+.container {
+  display: flex;
+  align-items: center;
+  padding-left: 20px;
+  height: 73px;
+  border-bottom: 1px solid #303D45;
+  cursor: pointer;
+}
+
+.container:hover {
+  background-color: #1F2C33;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  background-image: url(../../assets/icons/PngItem_5244625.png);
+  background-color: #697175;
+  background-position: 2px 6px;
+  background-repeat: no-repeat;
+  background-size: 35px 36px;
+  border-radius: 50%;
+}
+
+.contactName {
+  margin-left: 25px;
+  font-size: 16px;
+  color: #E9EDEF;
+}
+
+.active {
+  background-color: #1F2C33;
+}
