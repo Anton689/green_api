@@ -13,6 +13,7 @@ import { selectContacts } from 'store/selectors';
 import { addNewContact, setCurrentContact } from 'store/slices';
 import { logOut } from 'store/slices/appSlice';
 import { ContactType, ReturnComponentType } from 'types';
+import { getRandomID } from 'utils';
 
 export const ContactList = (): ReturnComponentType => {
   const [modalOpen, setModalOpen] = useState(false);
@@ -33,18 +34,19 @@ export const ContactList = (): ReturnComponentType => {
     dispatch(logOut());
   };
 
+  const pickCurrentContact = (contact: ContactType): void => {
+    dispatch(setCurrentContact(contact));
+  };
+
   const handleAddContact = (name: string, phone: string): void => {
     const payload = {
-      id: Math.round(Math.random() * 100),
+      id: getRandomID(),
       name,
       phone: `${phone}@c.us`,
     };
     dispatch(addNewContact(payload));
+    pickCurrentContact(payload);
     handleCloseModal();
-  };
-
-  const pickCurrentContact = (contact: ContactType): void => {
-    dispatch(setCurrentContact(contact));
   };
 
   return (

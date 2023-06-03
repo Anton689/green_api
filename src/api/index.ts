@@ -1,2 +1,2 @@
-export type { SendType } from './apiTypes/sendType';
+export type { SendType, ReceiveMessageResponseType } from './apiTypes/sendType';
 export { chatAPI } from './chatAPI';

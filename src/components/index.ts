@@ -4,3 +4,4 @@ export { ContactList } from './ContactList/ContactList';
 export { ContactItem } from './ContactItem/ContactItem';
 export { Modal } from './Modal/Modal';
 export { ChatWindow } from './ChatWindow/ChatWindow';
+export { Messages } from './Messages/Messages';

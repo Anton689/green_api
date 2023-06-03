@@ -9,8 +9,10 @@ import { ReturnComponentType } from 'types';
 export const Login = (): ReturnComponentType => {
   const dispatch = useAppDispatch();
 
-  const [instanceValue, setInstanceValue] = useState('');
-  const [tokenValue, setTokenValue] = useState('');
+  const [instanceValue, setInstanceValue] = useState('1101821836');
+  const [tokenValue, setTokenValue] = useState(
+    '28b9dfaa0bab46f1b8a136c6dc3ac21baa41cd4fc26a40979e',
+  );
   const [error, setError] = useState(false);
 
   const onSubmit = (e: FormEvent<HTMLFormElement>): void => {

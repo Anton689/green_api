@@ -13,6 +13,7 @@ const initialState: InitialStateType = {
     id: 0,
     name: '',
     phone: '',
+    messageText: '',
   },
 };
 
