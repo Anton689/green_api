@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 
 import s from './Modal.module.css';
 
+import { Input } from 'components';
 import { ReturnComponentType } from 'types';
 
 type ModalProps = {
@@ -12,19 +13,25 @@ type ModalProps = {
 };
 
 export const Modal = ({ isOpen, onClose, onSubmit }: ModalProps): ReturnComponentType => {
-  const [nameValue, setNameValue] = useState('');
-  const [phoneValue, setPhoneValue] = useState('');
-
-  const handleSubmit = (): void => {
-    if (nameValue.trim() !== '' || phoneValue.trim() !== '') {
-      onSubmit(nameValue, phoneValue);
-    }
-  };
+  const [nameValue, setNameValue] = useState<string>('');
+  const [phoneValue, setPhoneValue] = useState<string>('');
 
   const handleClose = (): void => {
     setNameValue('');
     setPhoneValue('');
     onClose();
+  };
+
+  const handleSubmit = (): void => {
+    if (nameValue.trim() !== '' || phoneValue.trim() !== '') {
+      onSubmit(nameValue, phoneValue);
+      handleClose();
+    }
+  };
+
+  const phoneValidation = (value: string): void => {
+    const validatedValue = value.replace(/\D/g, '').replace(/^8/, '7');
+    setPhoneValue(validatedValue);
   };
 
   if (!isOpen) {
@@ -34,17 +41,15 @@ export const Modal = ({ isOpen, onClose, onSubmit }: ModalProps): ReturnComponen
   return (
     <div className={s.modal}>
       <div className={s.modalContent}>
-        <input
-          placeholder="name"
-          type="text"
+        <Input
           value={nameValue}
-          onChange={e => setNameValue(e.target.value)}
+          placeholder="name"
+          onChange={value => setNameValue(value)}
         />
-        <input
-          placeholder="phone"
-          type="text"
+        <Input
           value={phoneValue}
-          onChange={e => setPhoneValue(e.target.value)}
+          placeholder="phone: 7XXXXXXXXXX"
+          onChange={value => phoneValidation(value)}
         />
 
         <button className={s.closeButton} onClick={handleSubmit}>

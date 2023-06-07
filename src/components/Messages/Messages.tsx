@@ -13,5 +13,7 @@ export const Messages = ({
   messageText,
   messageType,
 }: MessagesProps): ReturnComponentType => (
-  <div className={s.outgoingMessage}>{messageText}</div>
+  <div className={messageType === 'send' ? s.outgoingMessage : s.incomingMessage}>
+    {messageText}
+  </div>
 );

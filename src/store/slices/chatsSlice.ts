@@ -5,6 +5,9 @@ import { RootState } from 'store/store';
 import { ChatInfoType } from 'types';
 import { getRandomID } from 'utils';
 
+const TEMPLATE_FOR_MEDIA_MESSAGE =
+  'Apparently You received a message with media file. Please, try use "receive" button again for getting text message';
+
 type InitialStateType = {
   chatInfo: ChatInfoType;
 };
@@ -14,12 +17,12 @@ const initialState: InitialStateType = {
 };
 
 export const sendMessage = createAsyncThunk(
-  'chatSlice/msgSend',
+  'chats/sendMessage',
   async (body: SendType, { getState, dispatch }) => {
     try {
       const { app } = getState() as RootState;
 
-      // await chatAPI.sendMessage(app.idInstance, app.apiToken, body);
+      await chatAPI.sendMessage(app.idInstance, app.apiToken, body);
       dispatch(
         // eslint-disable-next-line @typescript-eslint/no-use-before-define
         addChatInfo({
@@ -31,7 +34,6 @@ export const sendMessage = createAsyncThunk(
           },
         }),
       );
-      // return response;
     } catch (error: any) {
       console.error(error);
     }
@@ -40,17 +42,36 @@ export const sendMessage = createAsyncThunk(
 
 export const receiveMessage = createAsyncThunk(
   'chatSlice/msgReceive',
-  async (_, { getState }) => {
+  async (_, { getState, dispatch }) => {
     try {
       const { app } = getState() as RootState;
       const response = await chatAPI.receiveMessage(app.idInstance, app.apiToken);
 
       // don't delete message if the queue (messages) is empty
       if (response.data) {
+        const { messageData, senderData } = response.data.body;
+        const { chatId } = senderData;
+        const messageText =
+          messageData.typeMessage === 'textMessage'
+            ? messageData.textMessageData.textMessage
+            : TEMPLATE_FOR_MEDIA_MESSAGE;
+
         await chatAPI.deleteMessage(
           app.idInstance,
           app.apiToken,
           response?.data.receiptId,
+        );
+
+        dispatch(
+          // eslint-disable-next-line @typescript-eslint/no-use-before-define
+          addChatInfo({
+            chatId,
+            messageText: {
+              id: getRandomID(),
+              messageText,
+              messageType: 'receive',
+            },
+          }),
         );
       }
     } catch (error: any) {

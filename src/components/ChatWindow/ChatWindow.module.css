@@ -23,35 +23,34 @@
   height: 100%;
 }
 
-.incomingMessage {
-  align-self: flex-start;
-  color: white;
-  margin-left: 63px;
-  margin-bottom: 8px;
-  padding: 7px 9px 7px 9px;
-  background-color: #1F2C33;
-  border-radius: 10px;
-  font-size: 14px;
-}
-
-.outgoingMessage {
-  align-self: flex-end;
-  color: white;
-  margin-right: 63px;
-  margin-bottom: 8px;
-  padding: 7px 9px 7px 9px;
-  background-color: #015C4B;
-  border-radius: 10px;
-  font-size: 14px;
-}
-
 .inputBlock {
   display: flex;
+  align-items: center;
   width: 100%;
+  height: 62px;
+  background-color: #202C33;
+  padding: 0 5px;
+
 }
 
 .inputBlock input {
+  height: 30px;
   width: 100%;
+  padding: 0 10px;
+  outline: none;
+  border: none;
+  background-color: #293942;
+  color: #fff;
+}
+
+.chatButton {
+  height: 30px;
+  font-size: 11px;
+  padding: 0 5px;
+  background-color: #1F2C33;
+  border: 1px solid #04A784;
+  color: #04A784;
+  cursor: pointer;
 }
 
 .empty {

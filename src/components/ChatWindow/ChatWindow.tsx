@@ -11,6 +11,8 @@ import { selectMessages } from 'store/selectors/selectMessages';
 import { receiveMessage, sendMessage } from 'store/slices';
 import { ReturnComponentType } from 'types';
 
+const ZERO = 0;
+
 export const ChatWindow = (): ReturnComponentType => {
   const dispatch = useAppDispatch();
 
@@ -19,7 +21,7 @@ export const ChatWindow = (): ReturnComponentType => {
 
   const [value, setValue] = useState<string>('');
 
-  const mesSend = (): void => {
+  const sendMessageHandler = (): void => {
     const body = {
       chatId: phone,
       message: value,
@@ -40,8 +42,7 @@ export const ChatWindow = (): ReturnComponentType => {
       <div className={s.header}>{name}</div>
 
       <div className={s.messages}>
-        <div className={s.incomingMessage}>received message</div>
-        {messages.length &&
+        {messages.length > ZERO &&
           messages.map(message => (
             <Messages
               key={message.id}
@@ -55,15 +56,16 @@ export const ChatWindow = (): ReturnComponentType => {
         <input
           type="text"
           value={value}
+          placeholder="Type a message"
           onChange={(e: any) => setValue(e.target.value)}
         />
 
-        <button type="button" onClick={mesSend}>
-          send
+        <button type="button" onClick={sendMessageHandler} className={s.chatButton}>
+          Send
         </button>
 
-        <button type="button" onClick={receiveMessageHandler}>
-          reciev
+        <button type="button" onClick={receiveMessageHandler} className={s.chatButton}>
+          Receive
         </button>
       </div>
     </div>

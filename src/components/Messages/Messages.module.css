@@ -8,3 +8,14 @@
   border-radius: 10px;
   font-size: 14px;
 }
+
+.incomingMessage {
+  align-self: flex-start;
+  color: white;
+  margin-left: 63px;
+  margin-bottom: 8px;
+  padding: 7px 9px 7px 9px;
+  background-color: #1F2C33;
+  border-radius: 10px;
+  font-size: 14px;
+}

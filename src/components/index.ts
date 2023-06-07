@@ -5,3 +5,4 @@ export { ContactItem } from './ContactItem/ContactItem';
 export { Modal } from './Modal/Modal';
 export { ChatWindow } from './ChatWindow/ChatWindow';
 export { Messages } from './Messages/Messages';
+export { Input } from './Input/Input';

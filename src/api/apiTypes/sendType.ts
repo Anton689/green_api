@@ -13,7 +13,8 @@ type BodyType = {
   instanceData: InstanceDataType;
   messageData: {
     textMessageData: { textMessage: string };
-    typeMessage: 'textMessage';
+    typeMessage: 'textMessage' | 'reactionMessage';
+    extendedTextMessageData?: { text: string };
   };
   senderData: SenderDataType;
   timestamp: number;
