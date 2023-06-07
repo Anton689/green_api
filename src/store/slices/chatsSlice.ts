@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-use-before-define */
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
 import { SendType, chatAPI } from 'api';
@@ -24,7 +25,6 @@ export const sendMessage = createAsyncThunk(
 
       await chatAPI.sendMessage(app.idInstance, app.apiToken, body);
       dispatch(
-        // eslint-disable-next-line @typescript-eslint/no-use-before-define
         addChatInfo({
           chatId: body.chatId,
           messageText: {
@@ -62,17 +62,20 @@ export const receiveMessage = createAsyncThunk(
           response?.data.receiptId,
         );
 
-        dispatch(
-          // eslint-disable-next-line @typescript-eslint/no-use-before-define
-          addChatInfo({
-            chatId,
-            messageText: {
-              id: getRandomID(),
-              messageText,
-              messageType: 'receive',
-            },
-          }),
-        );
+        if (messageData.typeMessage !== 'extendedTextMessage') {
+          dispatch(
+            addChatInfo({
+              chatId,
+              messageText: {
+                id: getRandomID(),
+                messageText,
+                messageType: 'receive',
+              },
+            }),
+          );
+        } else {
+          dispatch(receiveMessage());
+        }
       }
     } catch (error: any) {
       console.error(error);

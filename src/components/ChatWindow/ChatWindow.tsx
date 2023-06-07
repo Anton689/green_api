@@ -14,6 +14,7 @@ import { ReturnComponentType } from 'types';
 const ZERO = 0;
 
 export const ChatWindow = (): ReturnComponentType => {
+  console.log('render, ChatWindow');
   const dispatch = useAppDispatch();
 
   const messages = useSelector(selectMessages);
@@ -27,6 +28,7 @@ export const ChatWindow = (): ReturnComponentType => {
       message: value,
     };
     dispatch(sendMessage(body));
+    setValue('');
   };
 
   const receiveMessageHandler = (): void => {

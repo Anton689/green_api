@@ -12,8 +12,11 @@ type MessagesProps = {
 export const Messages = ({
   messageText,
   messageType,
-}: MessagesProps): ReturnComponentType => (
-  <div className={messageType === 'send' ? s.outgoingMessage : s.incomingMessage}>
-    {messageText}
-  </div>
-);
+}: MessagesProps): ReturnComponentType => {
+  console.log('render, Messages');
+  return (
+    <div className={messageType === 'send' ? s.outgoingMessage : s.incomingMessage}>
+      {messageText}
+    </div>
+  );
+};
