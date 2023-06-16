@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/green_api/static/css/main.d50b56f6.css",
+    "main.js": "/green_api/static/js/main.70615a4f.js",
+    "static/media/PngItem_5244625.png": "/green_api/static/media/PngItem_5244625.497a0b2736ae594108a6.png",
+    "index.html": "/green_api/index.html",
+    "main.d50b56f6.css.map": "/green_api/static/css/main.d50b56f6.css.map",
+    "main.70615a4f.js.map": "/green_api/static/js/main.70615a4f.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.d50b56f6.css",
+    "static/js/main.70615a4f.js"
+  ]
+}
