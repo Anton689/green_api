@@ -9,6 +9,7 @@ To get started with the application, you need to follow the [green account](http
 ## View
 
 
+<img width="1800" alt="Снимок экрана 2023-06-16 в 19 11 44" src="https://github.com/Anton689/green_api/assets/91281363/2b460dce-fcdf-474b-b27a-f238fcb8060c">
 
 ## Available Scripts
 
