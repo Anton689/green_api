@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 
 import { useSelector } from 'react-redux';
 
@@ -14,7 +14,6 @@ import { ReturnComponentType } from 'types';
 const ZERO = 0;
 
 export const ChatWindow = (): ReturnComponentType => {
-  console.log('render, ChatWindow');
   const dispatch = useAppDispatch();
 
   const messages = useSelector(selectMessages);
@@ -22,18 +21,18 @@ export const ChatWindow = (): ReturnComponentType => {
 
   const [value, setValue] = useState<string>('');
 
-  const sendMessageHandler = (): void => {
+  const sendMessageHandler = useCallback((): void => {
     const body = {
       chatId: phone,
       message: value,
     };
     dispatch(sendMessage(body));
     setValue('');
-  };
+  }, [dispatch, phone, value]);
 
-  const receiveMessageHandler = (): void => {
+  const receiveMessageHandler = useCallback((): void => {
     dispatch(receiveMessage());
-  };
+  }, [dispatch]);
 
   if (!id && !name) {
     return <div className={s.empty}>Add contact</div>;

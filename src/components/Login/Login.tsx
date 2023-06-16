@@ -15,10 +15,8 @@ export const Login = (): ReturnComponentType => {
 
   const isAuthError = useSelector(selectIsAuthError);
 
-  const [instanceValue, setInstanceValue] = useState<string>('1101821836');
-  const [tokenValue, setTokenValue] = useState<string>(
-    '28b9dfaa0bab46f1b8a136c6dc3ac21baa41cd4fc26a40979e',
-  );
+  const [instanceValue, setInstanceValue] = useState<string>('');
+  const [tokenValue, setTokenValue] = useState<string>('');
   const [error, setError] = useState<boolean>(false);
 
   const onSubmit = (e: FormEvent<HTMLFormElement>): void => {

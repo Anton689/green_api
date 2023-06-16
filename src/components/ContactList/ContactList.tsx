@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-magic-numbers */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 
 import { useSelector } from 'react-redux';
 
@@ -22,21 +22,24 @@ export const ContactList = (): ReturnComponentType => {
 
   const contacts = useSelector(selectContacts);
 
-  const handleOpenModal = (): void => {
+  const handleOpenModal = useCallback((): void => {
     setModalOpen(true);
-  };
+  }, [setModalOpen]);
 
-  const handleCloseModal = (): void => {
+  const handleCloseModal = useCallback((): void => {
     setModalOpen(false);
-  };
+  }, [setModalOpen]);
 
-  const handleLogOut = (): void => {
+  const handleLogOut = useCallback((): void => {
     dispatch(logOut());
-  };
+  }, [dispatch]);
 
-  const pickCurrentContact = (contact: ContactType): void => {
-    dispatch(setCurrentContact(contact));
-  };
+  const pickCurrentContact = useCallback(
+    (contact: ContactType): void => {
+      dispatch(setCurrentContact(contact));
+    },
+    [dispatch],
+  );
 
   const handleAddContact = (name: string, phone: string): void => {
     const payload = {

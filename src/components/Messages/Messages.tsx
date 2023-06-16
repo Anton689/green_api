@@ -9,14 +9,10 @@ type MessagesProps = {
   messageType: 'send' | 'receive';
 };
 
-export const Messages = ({
-  messageText,
-  messageType,
-}: MessagesProps): ReturnComponentType => {
-  console.log('render, Messages');
-  return (
+export const Messages = React.memo(
+  ({ messageText, messageType }: MessagesProps): ReturnComponentType => (
     <div className={messageType === 'send' ? s.outgoingMessage : s.incomingMessage}>
       {messageText}
     </div>
-  );
-};
+  ),
+);
