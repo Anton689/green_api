@@ -8,7 +8,7 @@ To get started with the application, you need to follow the [green account](http
 
 ## View
 
-1) log in
+1) login
 <img width="1800" alt="screen1" src="https://github.com/Anton689/green_api/assets/91281363/2b460dce-fcdf-474b-b27a-f238fcb8060c">
 
 2) main view
