@@ -6,6 +6,10 @@ This is a simple chat application with a user-friendly interface for sending and
 
 To get started with the application, you need to follow the [green account](https://green-api.com/docs/before-start/#cabinet), register, and obtain a token and instance.
 
+## View
+
+
+
 ## Available Scripts
 
 In the project directory, you can run:
